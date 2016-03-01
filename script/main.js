@@ -1,5 +1,3 @@
-window.CONVERSION_URL = "/convert";
-
 // Drag & Drop
 document.addEventListener("dragover", function(event) { event.preventDefault(); })
 document.addEventListener("drop", function(event) {
@@ -29,7 +27,7 @@ document.getElementsByTagName("input")[0].addEventListener("change", function(ev
 
 
 // Select complete Data URI on click
-document.getElementsByClassName("result")[0].addEventListener("click", selectText)
+document.getElementsByClassName("result")[0].addEventListener("click", function() { selectText(this); });
 
 // Copy complete Data URI on Ctrl+C
 document.addEventListener("copy", function(event) {
@@ -38,29 +36,38 @@ document.addEventListener("copy", function(event) {
 })
 
 if (location.protocol != "file:") {
-// ZeroClipboard initialization
-ZeroClipboard.config({ swfPath: "./lib/ZeroClipboard.swf" });
-var zc = new ZeroClipboard(document.getElementById("copy"));
-zc.on("ready", function(readyEvent) {
-    zc.on("copy", function (event) {
-        var clipboard = event.clipboardData;
-        clipboard.setData("text/plain", result.get());
-    });
-    zc.on("aftercopy", function(event) {
-        event.target.classList.add("copied");
-        setTimeout(function(e) {
-            event.target.classList.remove("copied");
-        }, 1000);
-        document.body.tabIndex = 0;
-        document.body.focus();
-    });
-});
+    window.zcint = setInterval(function() {
 
-// Sometimes the hover state of ZeroClopboard isn't removed
-document.body.addEventListener("mousemove", function(event) {
-    if (event.target.tagName != "OBJECT" && event.target.id != "copy") document.getElementById("copy").classList.remove("zeroclipboard-is-hover");
-})
+        if (typeof ZeroClipboard == "undefined") return;
+        else {
+            clearInterval(zcint);
+            delete window.zcint;
+        }
 
+        // ZeroClipboard initialization
+        ZeroClipboard.config({ swfPath: "./lib/ZeroClipboard.swf" });
+        var zc = new ZeroClipboard(document.getElementById("copy"));
+        zc.on("ready", function(readyEvent) {
+            zc.on("copy", function (event) {
+                var clipboard = event.clipboardData;
+                clipboard.setData("text/plain", result.get());
+            });
+            zc.on("aftercopy", function(event) {
+                event.target.classList.add("copied");
+                setTimeout(function(e) {
+                    event.target.classList.remove("copied");
+                }, 1000);
+                document.body.tabIndex = 0;
+                document.body.focus();
+            });
+        });
+
+        // Sometimes the hover state of ZeroClopboard isn't removed
+        document.body.addEventListener("mousemove", function(event) {
+            if (event.target.tagName != "OBJECT" && event.target.id != "copy") document.getElementById("copy").classList.remove("zeroclipboard-is-hover");
+        })
+
+    }, 250);
 } else document.getElementById("copy").style.display = "none";
 
 // IE fix for download button
