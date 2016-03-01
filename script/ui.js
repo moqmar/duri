@@ -108,7 +108,7 @@ function updateDownloadLink(filename) {
 function confirmFilesize(s, max, callback, additional) {
     if (s > max) swal({
         title: "Large File",
-        text: "The file you are trying to convert is very large (" + size(s) + ")\n\nThis will probably take a long time or even crash your browser." + (additional ? "\n" + additional : "") + "\n\nAre you sure you want to continue?",
+        html: "The file you are trying to convert is very large (" + size(s) + ")<br><br>This will probably take a long time or even crash your browser." + (additional ? "<br>" + additional : "") + "<br><br>Are you sure you want to continue?",
         type: "warning",
         showCancelButton: true,
         confirmButtonText: "Continue",

@@ -4,6 +4,7 @@
   "description": "Data URI Generator and Image Optimizer",
   "main": "server.js",
   "author": "Moritz Marquardt",
+  "license": "MIT",
   "dependencies": {
     "colors": "^1.1.2",
     "express": "^4.13.4",

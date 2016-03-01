@@ -68,6 +68,11 @@ a:hover, a.zeroclipboard-is-hover { color: #7D978E; text-decoration: underline; 
     overflow-x: hidden;
     overflow-y: scroll;
 }
+code {
+    font-family: Hack, monospace;
+    font-size: 0.9em;
+    color: #666;
+}
 #more {
     width: 800px; max-width: 100%; max-height: 200px;
     display: flex; align-items: flex-start;
@@ -198,6 +203,22 @@ body.loading .result:after {
     z-index: 1001;
 }
 
+hr, * .sweet-alert hr:not(.sweet-spacer) {
+    height: 0; border: none; outline: 0;
+    border-bottom: 2px solid #ADC7BE;
+    margin: 15px 0;
+}
+.sweet-spacer { margin: 5px 0; }
+
+.sweet-alert {
+    border-radius: 0 !important;
+    font-family: inherit !important;
+    font-size: 1.15em !important;
+    outline: 0 !important;
+    box-shadow: 0 1px 6px 1px rgba(0,0,0,0.4);
+}
+.sweet-alert.donate { text-align: justify; }
+.sweet-alert.donate .sweet-confirm { float: right; }
 .sweet-alert button {
     border-radius: 0 !important;
     box-shadow: none !important;
@@ -207,10 +228,10 @@ body.loading .result:after {
     color: #333 !important;
     transition: background 0.2s;
 }
-.sweet-alert button.cancel {
+.sweet-alert .sweet-cancel {
     background: #ddd !important;
     border-color: #ddd !important;
 }
 .sweet-alert button:hover { background: #fbfbfb !important; }
-.sweet-alert .sa-icon.sa-success .sa-line { background-color: #ADC7BE; }
-.sweet-alert .sa-icon.sa-success { border-color: #ADC7BE; }
+.sweet-alert .icon.success .line { background-color: #ADC7BE !important; }
+.sweet-alert .icon.success { border-color: #ADC7BE !important; }

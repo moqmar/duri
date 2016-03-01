@@ -18,13 +18,13 @@ svgo: npm libdir
 zc: zeroclipboard
 
 zeroclipboard: libdir
-	[ -f lib/ZeroClipboard.min.js  ] || wget https://cdn.jsdelivr.net/zeroclipboard/2.2.0/ZeroClipboard.min.js -O lib/ZeroClipboard.min.js
-	[ -f lib/ZeroClipboard.min.map ] || wget https://cdn.jsdelivr.net/zeroclipboard/2.2.0/ZeroClipboard.min.map -O lib/ZeroClipboard.min.map
-	[ -f lib/ZeroClipboard.swf     ] || wget https://cdn.jsdelivr.net/zeroclipboard/2.2.0/ZeroClipboard.swf -O lib/ZeroClipboard.swf
+	wget https://cdn.jsdelivr.net/zeroclipboard/2.2.0/ZeroClipboard.min.js -O lib/ZeroClipboard.min.js -q
+	wget https://cdn.jsdelivr.net/zeroclipboard/2.2.0/ZeroClipboard.min.map -O lib/ZeroClipboard.min.map -q
+	wget https://cdn.jsdelivr.net/zeroclipboard/2.2.0/ZeroClipboard.swf -O lib/ZeroClipboard.swf -q
 
 sweetalert: libdir
-	[ -f lib/sweetalert.min.js ] || wget https://cdn.jsdelivr.net/sweetalert/1.1.3/sweetalert.min.js -O lib/sweetalert.min.js
-	[ -f lib/sweetalert.css    ] || wget https://cdn.jsdelivr.net/sweetalert/1.1.3/sweetalert.css -O lib/sweetalert.css
+	wget https://raw.githubusercontent.com/limonte/sweetalert2/master/dist/sweetalert2.min.js -O lib/sweetalert.min.js -q
+	wget https://raw.githubusercontent.com/limonte/sweetalert2/master/dist/sweetalert2.css -O lib/sweetalert.css -q
 
 clean:
 	rm -rf lib/ZeroClipboard.min.js lib/ZeroClipboard.min.map lib/ZeroClipboard.swf lib/svgo.min.js node_modules/ || echo -n
