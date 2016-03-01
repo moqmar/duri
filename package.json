@@ -1,0 +1,15 @@
+{
+  "name": "duri",
+  "version": "0.1.0",
+  "description": "Data URI Generator and Image Optimizer",
+  "main": "server.js",
+  "author": "Moritz Marquardt",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "express": "^4.13.4",
+    "gifsicle": "^3.0.3",
+    "imagemagick-stream": "^4.0.1",
+    "pngquant": "^0.6.0",
+    "svgo": "^0.6.1"
+  }
+}

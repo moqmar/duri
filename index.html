@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Duri &nbsp;&bull;&nbsp; Data URI Generator &amp; Image Compressor</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <link rel="alternate icon" type="image/svg+xml" href="favicon.svg">
+        <link rel="stylesheet" href="./style.css">
+        <script src="./lib/ZeroClipboard.min.js"></script>
+        <script src="./lib/sweetalert.min.js"></script>
+        <script src="./lib/svgo.min.js"></script>
+        <script src="./script/helpers.js"></script>
+        <script src="./script/convert.js"></script>
+        <script src="./script/convert-online.js"></script>
+        <script src="./script/ui.js"></script>
+    </head>
+    <body>
+        <script>
+            document.body.classList.add("oc-" + (onlinecompression.enabled() ? "on" : "off"));
+            if (location.protocol == "file:")
+            document.body.classList.add("oc-" + (!onlinecompression.enabled() ? "on" : "off"));
+        </script>
+        <main>
+            <div id="infobox">
+                <big>what is this?</big><br>
+                Duri is able to generate a Data URI from any file or text by only using JavaScript in your browser. Images in the formats JPG, PNG, GIF and SVG will be compressed on-the-fly.<br><br>
+                <div class="oc-on">For the best compression options for JPG, PNG and GIF, those files will be uploaded to our server. You might want to <a onclick="onlinecompression.toggle()">turn that feature off</a> for reduced bandwidth usage, which will disable GIF and lossy PNG compression and will make compressed JPG images slightly larger.</div>
+                <div class="oc-off">Online compression for smaller JPG, PNG and GIF files is disabled - <a onclick="onlinecompression.toggle()">enable online compression</a></div>
+            </div>
+            <div id="upload">
+                <label for="upload">Select a file</label>
+                <input type="file" id="upload">
+            </div>
+            <p>
+                paste any image or text with <strong>ctrl+v</strong>, or simply <strong>drag + drop</strong> any file to this window
+            </p>
+            <div id="content">
+                <pre class="result"></pre>
+                <div id="status">
+                    <div class="close" onclick="cancelUpload()"></div>
+                    <span>uploading your file to the server for better compression options...</span><br>
+                    <small>you may already use the data uri above, but it will be compressed even more if you wait a few seconds</small>
+                    <div class="progress">
+                        <div id="percentage">10</div>
+                        <div><div id="progress" style="width: 25%"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div id="more">
+                <div>
+                    <span id="info"></span>
+                    <a id="copy">copy data uri to clipboard</a>
+                </div>
+                <div class="tab" id="lossless-tab" onclick="lossy = false">original</div>
+                <div class="tab" id="lossy-tab" onclick="lossy = true">lossy</div>
+            </div>
+        </main>
+        <script src="./script/main.js"></script>
+    </body>
+</html>
