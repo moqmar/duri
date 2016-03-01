@@ -9,7 +9,11 @@
     "express": "^4.13.4",
     "gifsicle": "^3.0.3",
     "imagemagick-stream": "^4.0.1",
-    "pngquant": "^0.6.0",
+    "pngquant": "^0.6.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "uglifyjs": "^2.4.10",
     "svgo": "^0.6.1"
   }
 }
