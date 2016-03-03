@@ -138,7 +138,7 @@ function convertString(s) {
         confirmFilesize(s.length, 1024*1024*1.5, function(s) {
             document.body.classList.add("loading");
             window.type = "svg";
-            setTimeout(compressSVG, 100, s, "clipboard.txt");
+            setTimeout(compressSVG, 100, s, "clipboard.svg");
         }.bind(this, s));
     } else {
         confirmFilesize(s.length, 1024*1024*10, function(s) {

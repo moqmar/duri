@@ -16,7 +16,7 @@ function donate() {
               "<hr>" +
               "Thank you very much for your support<br>" +
               "<strong>Moritz</strong><br>" +
-              "<small style=\"position: relative; top: 15px; margin-bottom: -50px; display: block\">Icons by <a href=\"https://www.iconfinder.com/icons/345557\" target=\"_BLANK\">Hello Many</a>, <a href=\"https://www.iconfinder.com/icons/272914\" target=\"_BLANK\">Mr. Cherry</a> and <a href=\"https://www.iconfinder.com/icons/317712\" target=\"_BLANK\">Zlatko Najdenovski</a>",
+              "<small style=\"position: relative; top: 15px; margin-bottom: -50px; display: block; z-index: -1\">Icons by <a href=\"https://www.iconfinder.com/icons/345557\" target=\"_BLANK\">Hello Many</a>, <a href=\"https://www.iconfinder.com/icons/272914\" target=\"_BLANK\">Mr. Cherry</a> and <a href=\"https://www.iconfinder.com/icons/317712\" target=\"_BLANK\">Zlatko Najdenovski</a>",
         confirmButtonText: "Alright",
         customClass: "donate",
         width: 800
