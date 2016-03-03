@@ -42,7 +42,7 @@ app.post("/convert", function(req, res) {
     switch (type) {
         case "image/png":
             _("PNG conversion request from " + req.ipp.yellow.bold, "verbose")
-            stream = new pngquant(["--quality", "0-20"]);
+            stream = new pngquant(["--quality", "0-20", "-"]);
             stream.on("error", function(e)  {
                 console.log(e);
             })
