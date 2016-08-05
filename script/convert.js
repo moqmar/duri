@@ -31,6 +31,13 @@ function compressSVG(s, name) {
         document.getElementById("lossless-tab").textContent = "plain svg";
         updateDownloadLink(name || "unnamed.svg");
         document.body.classList.remove("loading");
+
+        svgo.config.js2svg.attrStart = '="';
+        svgo.config.js2svg.attrEnd = '"';
+        svgo.config.js2svg.regValEntities = /[&"<>]/g;
+        svgo.optimize(s, function(svg) {
+            if (!svg.error) result.set("lossless", svg.data, { original: s.length, compressed: svg.data.length, uri: null })
+        });
     })
 }
 
