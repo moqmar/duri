@@ -21,11 +21,12 @@ function size(bytes) {
  */
 function getUri(s, type) {
     var uri = null;
-    var uri1 = "data:" + (type || "text/plain") + "," + encodeURIComponent(s)
-        .replace(/%20/g, " ")
-        .replace(/%3D/g, "=")
-        .replace(/%3A/g, ":")
-        .replace(/%2F/g, "/");
+    
+    s = encodeURIComponent(s);
+    var a = " =:/@<>$+,:;=?{}"; // Allowed characters
+    for (var i = 0; i < a.length; i++)
+        s = s.replace(new RegExp(encodeURIComponent(a.charAt(i)), "g"), a.charAt(i));
+    var uri1 = "data:" + (type || "text/plain") + "," + s;
     try {
         var uri2 = "data:" + (type || "text/plain") + ";base64," + btoa(s);
         uri = uri1.length > uri2.length ? uri2 : uri1;
